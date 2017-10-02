@@ -1,0 +1,151 @@
+.Pages {
+
+    margin-bottom: 5rem;
+
+    h1 {
+        @include breakpoint(xs) {
+            margin-top: 1rem;
+            margin-bottom: 0rem;
+            font-size: 27px;
+        }
+    }
+
+    .button {
+        &--main {
+            margin-left: 3rem;
+
+            @include breakpoint(md) {
+                margin-left: 6rem;
+            }
+
+            @include breakpoint(lg) {
+                margin-left: 9rem;
+            }
+
+            @include breakpoint(xs) {
+                margin-left: 0rem;
+            }
+
+            &:hover {
+                color: black;
+            }
+        }
+    }
+
+    .settings {
+        @include breakpoint(xs) {
+            float: right;
+            position: relative;
+            bottom: 5rem;
+        }
+
+        .arrow {
+            margin-left: 6rem;
+            cursor: pointer;
+    
+            @include breakpoint(lg) {
+                margin-left: 10rem;
+            }
+    
+            &__dropdown {
+                background: linear-gradient(to bottom, rgba(65,65,72,1) 0%,rgba(24,24,24,1) 100%);
+                padding: 1rem;
+                position: absolute;
+                width: 190px;
+                border-radius: 5px;
+                right: 20px;
+                @include breakpoint(lg) {
+                    right: 10px;
+                }
+                @include breakpoint(xs) {
+                    right: 1px;
+                }
+    
+    
+    
+                &__link {
+                    display: block;
+                    text-align: center;
+                    padding: 1rem;
+                    color: white;
+                    font-size: 1rem;
+    
+                    &:hover {
+                        color: offWhite;
+                        background-color: black;
+    
+                    }
+                }
+    
+                &__delete {
+                    color: red;
+                    margin: 0 auto;
+                    background: transparent;
+                    border: 0px;
+                    font-size: 1rem;
+                    display: block;
+                    padding: 1.2rem;
+                    cursor: pointer;
+    
+                    &:hover {
+                        background-color: black;
+                        width: 100%;
+                        padding: 1.2rem;
+    
+                    }
+                }
+            }
+    
+        }
+    }
+
+    .files {
+        .iconContainer {
+            background: rgba(118, 137, 182, 0.4);
+            float: left;
+            padding: 5px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            position: absolute;
+
+            @include breakpoint(xs) {
+                padding-top: 17px;
+                padding-bottom: 17px;
+                
+            }
+        }
+        .fileContainer {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 5px;
+            padding-left: 40px;
+            padding-right: 20px;
+            float: left;  
+            word-break: break-all;
+            width: 80%;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            
+            @include breakpoint(xs) {
+                width: 100%;
+            }
+        }
+        
+    }
+
+    .fileUploader {
+        background: rgba(255, 255, 255, 0.1);
+        text-align: center;
+        padding: 3rem;
+        border-radius: 3px;
+
+    }
+
+    .controlContainer {
+        margin-top: 3rem;
+    }
+    
+
+}
