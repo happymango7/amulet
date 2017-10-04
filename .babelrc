@@ -2,7 +2,13 @@
   plugins: [
     "inline-react-svg",
     "styled-jsx/babel",
-    ["module-resolver", { "root": ["./site"], "alias": {"styles": "./static/styles"}, "cwd": "babelrc"}],
+    ["module-resolver", { 
+      "root": ["./site"], 
+      "alias": {
+        "styles": "./static/styles",
+        "@site": "./site"
+      }, 
+      "cwd": "babelrc"}],
     ["wrap-in-js", {"extensions": ["css$", "scss$"]}]
   ],
   presets: [

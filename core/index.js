@@ -6,8 +6,7 @@ import passport from 'passport';
 import next from 'next';
 import routes from './routes/index';
 import { initDb, db } from './db';
-import { ncp } from 'ncp';
-import path from 'path';
+import copy from './scripts/copy';
 
 
 require('dotenv').config({path: 'variables.env'});
@@ -16,12 +15,9 @@ const dev = process.env.NODE_ENV !== 'production';
 const nextLoader = next({dev, dir: './site'});
 const handle = nextLoader.getRequestHandler();
 
-var srcPath = './core/views/'; //current folder
-var destPath = './site/pages/admin/'; //Any destination folder
-
-
 
 nextLoader.prepare().then(() => {
+
   const app = express();
 
 
@@ -44,15 +40,7 @@ nextLoader.prepare().then(() => {
 
   app.use('/', routes);
 
-  console.log('Copying files...');
-  ncp(srcPath, destPath, {dereference: true}, function (err) {
-    if (err) {
-      return console.error(err);
-    }
-    console.log(path.join(__dirname))
-   
-    console.log('Copying files complete.');
-  });
+  copy();
 
   app.get('*', (req, res) => {
     return handle(req, res);

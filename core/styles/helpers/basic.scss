@@ -1,4 +1,15 @@
-export default `
+.d1 {
+    margin-top: 1rem;
+}
+
+.d2 {
+    margin-top: 2rem;
+}
+
+.d3 {
+    margin-top: 3rem;
+}
+
 #loader {
   width: 40px;
   height: 40px;
@@ -21,10 +32,28 @@ export default `
 @-moz-keyframes loader {
   to { -moz-transform: rotate(360deg); }
 }
-@-ms-keyframes loader {
-  to { -ms-transform: rotate(360deg); }
-}
 @keyframes loader {
   to { transform: rotate(360deg); }
 }
-`;
+
+@mixin breakpoint($class) {
+  @if $class == xs {
+    @media (max-width: 767px) { @content; }
+  }
+ 
+  @else if $class == sm {
+    @media (min-width: 768px) { @content; }
+  }
+ 
+  @else if $class == md {
+    @media (min-width: 992px) { @content; }
+  }
+ 
+  @else if $class == lg {
+    @media (min-width: 1200px) { @content; }
+  }
+ 
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}

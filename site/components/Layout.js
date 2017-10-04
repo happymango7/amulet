@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import Head from 'next/head';
-import Loader from './Loader';
 import axios from 'axios';
 const instance = axios.create({baseURL: `/api/v1`});
-import stylesheet from  '../static/styles/main.scss'
+import stylesheet from  '@site/static/styles/main.scss'
 
 
 const IsLoading = () =>
   <div className="container">
-    <div><Loader /></div>
+    <div>loading</div>
   </div>;
 
 class Layout extends Component {
