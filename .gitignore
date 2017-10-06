@@ -4,4 +4,6 @@
 variables.env
 /core/db/db.json
 /testBin
+/site/pages/admin
+/site/static/styles/admin
 .vscode

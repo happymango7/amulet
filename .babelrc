@@ -1,6 +1,5 @@
 {
   plugins: [
-    "inline-react-svg",
     "styled-jsx/babel",
     ["module-resolver", { 
       "root": ["./site"], 

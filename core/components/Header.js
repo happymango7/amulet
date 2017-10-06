@@ -3,7 +3,6 @@ import Router from 'next/router';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-// import ExitIcon from '@site/static/exit.svg';
 
 
 
@@ -45,7 +44,7 @@ class Header extends Component {
           <div className="navbar-brand">
             <Link href="/">
               <a className="navbar-item">            
-                {/* <ExitIcon /> */}
+                <img src="/static/styles/admin/exit.svg" />
               </a>
             </Link>
             <div className={`navbar-burger burger ${toggleDropDown}`} onClick={this.dropDown}>

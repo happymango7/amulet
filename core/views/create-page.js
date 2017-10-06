@@ -4,7 +4,7 @@ import Router from 'next/router';
 import Dropzone from 'react-dropzone';
 import PropTypes from 'prop-types';
 import AdminLayout from '@site/components/admin/AdminLayout';
-import FileIcon from '@static/fileIcon.svg';
+
 const instance = axios.create({baseURL: `/api/v1`});
 
 
@@ -529,7 +529,7 @@ class CreatePage extends Component {
                             ? `File Name: ${file}`
                             : `${file.name} - ${file.size} bytes Large` */}
                             <div className="iconContainer">
-                              {<FileIcon />}
+                              <img src="/static/styles/admin/fileIcon.svg" />
                             </div>
                             <div className="fileContainer">
                               {file}
