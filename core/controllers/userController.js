@@ -58,9 +58,9 @@ exports.verify = (req, res) => {
     });
   }
 
-  // if more than 14 days old, force login
+  // if more than 1 days old, force login
   // iat == issued at
-  if (profile.iat - new Date() > 14) {
+  if (profile.iat - new Date() > 1) {
     return res.send({
       success: false,
       path: '/admin/login'

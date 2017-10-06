@@ -12,3 +12,9 @@
    npm run dev
 ```
 
+##Next on the docket:
+ - Fix admin authentication
+ - Newsletter feature in reports
+ - User management feature
+ - Implement redux to admin panel
+

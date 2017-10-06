@@ -73,7 +73,7 @@ class Header extends Component {
               <div className="navbar-item has-dropdown is-hoverable">
                 <a className="navbar-link">Admin</a>
                 <div className="navbar-dropdown is-boxed">
-                  {!this.state.loggedIn ? null : <div className="navbar-item"><a onClick={this.signOut}>Log Out</a></div>}
+                  <div className="navbar-item"><a onClick={this.signOut}>Log Out</a></div>
                 </div>
               </div>
             </div>

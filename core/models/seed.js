@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 const defaultdb = {
   metaData: [
     {
-      siteTitle: 'Orbit',
+      siteTitle: 'Amulet',
       siteDescription: 'A CMS built for the future'
     }
   ],

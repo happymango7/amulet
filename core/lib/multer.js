@@ -6,7 +6,7 @@ import multer from 'multer';
  */
 const storage =  multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, './static/uploads');
+    callback(null, './core/static/uploads');
   },
   filename: function (req, file, callback) {
     const originalname = file.originalname;
