@@ -40,7 +40,7 @@ class Pages extends Component {
    * Fetches/sets page data and common headers
    */
   componentDidMount() {
-    const token = localStorage.getItem('cnd.token');
+    const token = localStorage.getItem('amulet.token');
     axios.defaults.headers.common.Authorization = 'JWT ' + token;
 
     instance.get('listPages').then((res) => {

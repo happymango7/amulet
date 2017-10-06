@@ -25,7 +25,7 @@ class AdminIndex extends Component {
   }
 
   componentDidMount() {
-    const token = localStorage.getItem('cnd.token');
+    const token = localStorage.getItem('amulet.token');
     axios.defaults.headers.common.Authorization = 'JWT ' + token;
     this.getMetaData();
   }

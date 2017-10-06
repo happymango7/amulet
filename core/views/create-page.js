@@ -54,7 +54,7 @@ class CreatePage extends Component {
   }
 
   componentDidMount() {
-    const token = localStorage.getItem('cnd.token');
+    const token = localStorage.getItem('amulet.token');
     axios.defaults.headers.common.Authorization = 'JWT ' + token;
     const url = this.props.url;
     if (url.query && (url.query.id || url.query.title)) {

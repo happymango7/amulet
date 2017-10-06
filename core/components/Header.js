@@ -19,7 +19,7 @@ class Header extends Component {
 
   componentDidMount() {
     this.setState({
-      loggedIn: localStorage.getItem('cnd.token') ? true : false
+      loggedIn: localStorage.getItem('amulet.token') ? true : false
     });
   }
 
@@ -27,7 +27,7 @@ class Header extends Component {
     this.setState({
       loggedIn: false
     });
-    window.localStorage.removeItem('cnd.token');
+    window.localStorage.removeItem('amulet.token');
     Router.push({pathname: '/'});
   }
 
