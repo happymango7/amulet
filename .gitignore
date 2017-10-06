@@ -6,4 +6,5 @@ variables.env
 /testBin
 /site/pages/admin
 /site/static/styles/admin
+/site/components/admin
 .vscode
