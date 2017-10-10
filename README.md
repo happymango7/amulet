@@ -42,25 +42,25 @@ Whether you're developing the frontend of your site, or looking to contribute to
 
 eg.
 ```
-    import React, {Component} from 'react';
-    import Layout from '@site/components/Layout';
-    
-    
-    
-    class Index extends Component {
-     render() {
-     return(
-     <Layout>
-     <div className="Index">
-     <h1>Amulet installed</h1>
-     </div>
-     </Layout>
-     );
-     }
-    }
-    
-    
-    export default Index;
+import React, {Component} from 'react';
+import Layout from '@site/components/Layout';
+
+
+
+class Index extends Component {
+  render() {
+    return(
+      <Layout>
+        <div className="Index container has-text-centered">
+          <h1>Amulet installed</h1>
+        </div>
+      </Layout>
+    );
+  }
+}
+
+
+export default Index;
 ```
 You can create your own custom aliases inside `.babelrc` located in the root directory.
 ```
