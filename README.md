@@ -17,17 +17,17 @@ Make sure you have npm installed, and run `npm install` inside the amulet direct
 
 Example:
 ```
-    NODE_ENV=development
+NODE_ENV=development
     
-    SECRET=mysecret
+SECRET=mysecret
     
-    INIT_USER=admin@admin.com
-    INIT_PASS=password
+INIT_USER=admin@admin.com
+INIT_PASS=password
     
-    GMAILUSER=admin@gmail.com
-    GMAILPASS=password
+GMAILUSER=admin@gmail.com
+GMAILPASS=password
 ```
-That's it! Now run `npm run dev` and go to `[localhost:1337/admin](http://localhost:1337/admin)` and login with user info stated in the environment variables file.
+That's it! Now run `npm run dev` and go to `localhost:1337/admin` and login with user info stated in the environment variables file.
 
 
 ## How it works
@@ -76,7 +76,7 @@ You can create your own custom aliases inside `.babelrc` located in the root dir
 
 Amulet includes loaders for `css` & `scss` . More coming soon. Unfortunately, the image loader doesn't support aliases. To use an image, use relative routes. eg:
 
-    <img src="/static/icon.svg" />
+`<img src="/static/icon.svg" />`
 
 ## "Database"
 
@@ -86,28 +86,32 @@ By default, the database is stored UNENCRYPTED for development purposes. Althoug
 
 If you'd like to make sure your JSON file is encrypted, make sure to remove these 2 lines of code:
 
-    const db = low('./core/db/db.json');
-    export { db };
+```
+const db = low('./core/db/db.json');
+export { db };
+```
 
 Then uncomment:
 
-    export const db = low('./core/db/db-encrypted.json', {
-     format: {
-     deserialize: (str) => {
-     try {
-     const decrypted = cryptr.decrypt(str);
-     const obj = JSON.parse(decrypted);
-     return obj;
-     } catch (e) {
-     return JSON.parse(str);
-     }
-     },
-     serialize: (obj) => {
-     const str = JSON.stringify(obj);
-     return str;
-     }
-     },
-    });
+```
+export const db = low('./core/db/db-encrypted.json', {
+  format: {
+    deserialize: (str) => {
+      try {
+        const decrypted = cryptr.decrypt(str);
+        const obj = JSON.parse(decrypted);
+        return obj;
+      } catch (e) {
+        return JSON.parse(str);
+      }
+    },
+    serialize: (obj) => {
+      const str = JSON.stringify(obj);
+      return str;
+    }
+  },
+});
+```
 
 ## SEO
 
