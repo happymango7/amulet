@@ -19,6 +19,7 @@ router.get(`${apiPrefix}/listPages`, pageController.listPages);
 router.get(`${apiPrefix}/getPage`, pageController.getPage);
 router.get(`${apiPrefix}/getPage/:id`, pageController.getPage);
 router.get(`${apiPrefix}/siteData`, siteController.getSiteData);
+router.get(`${apiPrefix}/getUserList`, siteController.getUserList);
 
 
 /**

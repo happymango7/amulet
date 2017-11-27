@@ -14,3 +14,10 @@ exports.editSiteData = async (req, res) => {
     const site = await db.get(`metaData`).assign(req.body).write();
     res.json(site);
 };
+
+exports.getUserList = async (req, res) => {
+    winston.log('info', 'getUserList', {body: req.body});
+    const db = await req.app.get('db');
+    const users = await db.get(`users`);
+    res.json(users);
+}

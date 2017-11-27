@@ -19,7 +19,7 @@ class Pages extends Component {
   static dataStruc () {
     return {
       loading: true,
-      settingPanel: false,
+      settingPanel: -1,
       pages: [],
     };
   }
@@ -31,7 +31,7 @@ class Pages extends Component {
       ...Pages.dataStruc()
     };
     this.deletePage = this.deletePage.bind(this);
-    this.showSettings = this.showSettings.bind(this);
+
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -81,8 +81,10 @@ class Pages extends Component {
     })
   }
 
-  showSettings() {
-    this.state.settingPanel ? this.setState({settingPanel: false}) : this.setState({settingPanel: true})
+  showSettings(index) {
+    this.setState({
+      settingPanel: this.state.settingPanel === index ? -1 : index
+    })
   }
 
   hide() {
@@ -111,20 +113,19 @@ class Pages extends Component {
                 <div className="column">
                   <div className="settings">
                     <div className="arrow__container">
-                      <div className="arrow" onClick={this.showSettings} />
+                      <div className="arrow" onClick={this.showSettings.bind(this, i)} />
                     </div>
                     {
-                      this.state.settingPanel 
-                        ?
+                      this.state.settingPanel === i ?
                          <ClickOutside onClickOutside={::this.hide}>
-                        <div className="arrow__dropdown">
-                          <Link href={{pathname: '/admin/edit-page', query: {title: val.title}}}>
-                            <a className="arrow__dropdown__link">Edit</a>
-                          </Link>
-                          <button
-                            className="arrow__dropdown__delete"
-                            onClick={() => this.handleDelete(i)}>Delete</button>
-                        </div>
+                          <div className="arrow__dropdown">
+                            <Link href={{pathname: '/admin/edit-page', query: {title: val.title}}}>
+                              <a className="arrow__dropdown__link">Edit</a>
+                            </Link>
+                            <button
+                              className="arrow__dropdown__delete"
+                              onClick={() => this.handleDelete(i)}>Delete</button>
+                          </div>
                         </ClickOutside> 
                         : null
                     }
