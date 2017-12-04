@@ -8,3 +8,4 @@ variables.env
 /site/static/styles/admin
 /site/components/admin
 .vscode
+.DS_Store
