@@ -1,11 +1,17 @@
-import db from '../db';
+import db from '../db'
 
 export default class Site {
-    model = {
-        name: ''
-    }
+	model = {
+		title: '',
+		url: '',
+		pages: []
+	}
 
-    constructor(site) {
-        this.model.name = site.name;
-    }
+	constructor(newSite) {
+		this.model.id = newSite.id ? newSite.id : db.get('sites').size() + 1;
+		this.model.title = newSite.title;
+		this.model.url = newSite.url;
+		this.model.pages = newSite.pages;
+	}
+
 };

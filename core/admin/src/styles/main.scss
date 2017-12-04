@@ -1,0 +1,187 @@
+@import "~bulma";
+@import "./helpers/basic.scss";
+@import "./helpers/icons.scss";
+@import "./helpers/modal.scss";
+@import './navbar.scss';
+
+@import './login.scss';
+
+
+
+html,body {
+    background-color: #F4F8F9; 
+}
+
+h1 {
+    font-size: 36px;
+    color: #D2DAE7;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 25px;
+    color: white;
+    
+}
+
+p {
+    font-size: 13px;
+    color: white;
+}
+
+.container {
+	@include breakpoint(xs) {
+		text-align: center;
+	}
+}
+
+
+/*
+.########..#######..########..##.....##..######.
+.##.......##.....##.##.....##.###...###.##....##
+.##.......##.....##.##.....##.####.####.##......
+.######...##.....##.########..##.###.##..######.
+.##.......##.....##.##...##...##.....##.......##
+.##.......##.....##.##....##..##.....##.##....##
+.##........#######..##.....##.##.....##..######.
+*/
+
+
+
+.input {
+    background-color: transparent;
+    color: black;
+    border-color: #7689B6;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 10px;
+    margin-bottom: 1rem;
+
+    &:hover {
+        border-color: #7689B6;
+    }
+
+    &:active {
+        border-color: #7689B6;
+    }
+
+    &:focus {
+        border-color: #7689B6;
+    }
+}
+
+.textarea {
+    background-color: transparent;
+    color: black;
+    border-color: #7689B6;
+    padding-left: 10px;
+
+
+
+    &:hover {
+        border-color: #7689B6;
+    }
+
+    &:active {
+        border-color: #7689B6;
+    }
+
+    &:focus {
+        border-color: #7689B6;
+    }
+}
+
+/*
+.########..##.....##.########.########..#######..##....##..######.
+.##.....##.##.....##....##.......##....##.....##.###...##.##....##
+.##.....##.##.....##....##.......##....##.....##.####..##.##......
+.########..##.....##....##.......##....##.....##.##.##.##..######.
+.##.....##.##.....##....##.......##....##.....##.##..####.......##
+.##.....##.##.....##....##.......##....##.....##.##...###.##....##
+.########...#######.....##.......##.....#######..##....##..######.
+*/
+
+
+.button {
+    &--main {
+        width: 125px;
+        height: 40px;
+        text-align: center;
+        background: linear-gradient(to bottom right, #78FF83 30%, #22A7AD);
+        display: block;
+        color: black;
+        border-radius: 3px;
+        border-color: transparent;
+        border: 0px;
+				font-size: 14px;
+				padding-top: 7px;
+    }
+
+    &--action {
+        width: 125px;
+        height: 40px;
+        text-align: center;
+        background: #7689B6;
+        border: 1px solid #485675;
+        display: block;
+        color: white;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    &--danger {
+        background-color: transparent;
+        border: 0px;
+        color: grey;
+        font-size: 14px;
+    }
+}
+
+
+/*
+.########..##........#######...######..##....##..######.
+.##.....##.##.......##.....##.##....##.##...##..##....##
+.##.....##.##.......##.....##.##.......##..##...##......
+.########..##.......##.....##.##.......#####.....######.
+.##.....##.##.......##.....##.##.......##..##.........##
+.##.....##.##.......##.....##.##....##.##...##..##....##
+.########..########..#######...######..##....##..######.
+*/
+
+.block {
+	padding: 3rem;
+	border-radius: 10px;
+
+	@include breakpoint(xs) {
+		margin: 0 auto;
+	}
+
+	&--none {
+		width: 300px;
+		background-color: #D2DAE7;
+		text-align: center;
+		
+		p {
+			color: black;
+		}
+
+		.button {
+			&--main {
+				margin: 0 auto;
+				margin-top: 2rem;
+			}
+		}
+    }
+    
+    &--main {
+        width: 300px;
+        text-align: center;
+        background: linear-gradient(to bottom right, #78FF83 30%, #22A7AD);
+
+        a {
+            color: black;
+        }
+    }
+
+}

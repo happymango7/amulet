@@ -9,17 +9,19 @@ import { upload } from '../lib/multer.js';
 
 
 const router    = express.Router();
-const apiPrefix = '/api/v1';
+const apiPrefix = "/api"
+
+router.get('/', pageController.home);
 
 
 /**
  * Get
  */
-router.get(`${apiPrefix}/listPages`, pageController.listPages);
-router.get(`${apiPrefix}/getPage`, pageController.getPage);
-router.get(`${apiPrefix}/getPage/:id`, pageController.getPage);
-router.get(`${apiPrefix}/siteData`, siteController.getSiteData);
-router.get(`${apiPrefix}/getUserList`, siteController.getUserList);
+
+router.get(`/api/listSites`, siteController.listSites);
+router.get(`/api/getSite/:id`, siteController.getSite);
+
+
 
 
 /**
@@ -31,37 +33,34 @@ router.post(`${apiPrefix}/verify`, userController.verify);
 
 router.post(`${apiPrefix}/sendMail`, mailController.contactForm);
 
-router.post(`${apiPrefix}/editSiteData`,
-  passport.authenticate('jwt', {session: false}),
-  siteController.editSiteData
-);
 
-router.post(`${apiPrefix}/createPage`,
-  passport.authenticate('jwt', {session: false}),
-  pageController.createPage
+
+router.post(`${apiPrefix}/createSite`,
+  // passport.authenticate('jwt', {session: false}),
+  siteController.createSite
 );
-router.post(`${apiPrefix}/savePage`,
+router.post(`${apiPrefix}/saveSite`,
   passport.authenticate('jwt', {session: false}),
-  pageController.savePage
+  siteController.saveSite
 );
 router.post(`${apiPrefix}/uploadImage`,
   passport.authenticate('jwt', {session: false}),
   upload.any(),
-  pageController.uploadImage
+  siteController.uploadImage
 );
 
 
 /**
  * Put
  */
-router.put(`${apiPrefix}/editPage/:id`, pageController.editPage);
+router.put(`${apiPrefix}/editSite/:id`, siteController.editSite);
 
 
 /**
  * Delete
  */
-router.delete(`${apiPrefix}/deletePage/:id`, pageController.deletePage);
-router.delete(`${apiPrefix}/deleteImage/:id`, pageController.deleteImage);
+router.delete(`${apiPrefix}/deleteSite/:id`, siteController.deleteSite);
+router.delete(`${apiPrefix}/deleteImage/:id`, siteController.deleteImage);
 
 
 export default router;

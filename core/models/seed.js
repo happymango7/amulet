@@ -1,19 +1,26 @@
 import bcrypt from 'bcryptjs';
-const defaultdb = {
-  metaData: [
-    {
-      siteTitle: 'Amulet',
-      siteDescription: 'A CMS built for the future'
-    }
-  ],
-  pages: [
-    {
-      title: 'Home',
-      slug: 'home',
-      content: [{className: 'wrapper', body: 'lorem ipsum'}]
-    }
-  ],
 
+const defaultdb = {
+
+  sites: [
+    {
+      id: 0,
+      title: 'Site 1',
+      url: 'http://localhost:1337',
+      pages: [
+        {
+          title: 'Home', 
+          body: 'lorem ipsum',
+          content: [
+            {
+              className: 'header',
+              content: 'lorem ipsum'
+            }
+          ]
+        }
+      ]
+    }
+  ],
   users: [
     {
       id: 1,

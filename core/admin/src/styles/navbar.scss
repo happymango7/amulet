@@ -1,0 +1,20 @@
+.Navbar {
+  background-color: white;
+  margin-bottom: 2rem;
+  
+  a {
+      color: #545454;
+  }
+
+  a:hover {
+      color: #22A7AD;
+  }
+
+  .is-active {
+      font-weight: 800;
+      color: #181818;
+  }
+}
+
+
+
