@@ -14,7 +14,6 @@ class SiteForm extends Component {
     }
   }
 
-
   render() {
     const { site, submit, handleSubmit, pristine, reset, submitting } = this.props
     console.log(submit)
