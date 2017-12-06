@@ -10002,7 +10002,7 @@ function isPromise(obj) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SITE_DELETE_SUCCESS = exports.GET_SITE_ERROR = exports.GET_SITE_SUCCESS = exports.GET_SITE_START = exports.CREATE_SITE_ERROR = exports.CREATE_SITE_SUCESS = exports.CREATE_SITE_START = exports.LIST_SITES_ERROR = exports.LIST_SITES_SUCCESS = exports.LIST_SITES_START = undefined;
+exports.SITE_DELETE_SUCCESS = exports.GET_SITE_ERROR = exports.GET_SITE_SUCCESS = exports.GET_SITE_START = exports.EDIT_SITE_ERROR = exports.EDIT_SITE_SUCESS = exports.EDIT_SITE_START = exports.CREATE_SITE_ERROR = exports.CREATE_SITE_SUCESS = exports.CREATE_SITE_START = exports.LIST_SITES_ERROR = exports.LIST_SITES_SUCCESS = exports.LIST_SITES_START = undefined;
 exports.sitesListStart = sitesListStart;
 exports.sitesListSuccess = sitesListSuccess;
 exports.sitesListError = sitesListError;
@@ -10011,6 +10011,10 @@ exports.siteCreateStart = siteCreateStart;
 exports.siteCreateSuccess = siteCreateSuccess;
 exports.siteCreateError = siteCreateError;
 exports.createSite = createSite;
+exports.siteEditStart = siteEditStart;
+exports.siteEditSuccess = siteEditSuccess;
+exports.siteEditError = siteEditError;
+exports.editSite = editSite;
 exports.getSiteStart = getSiteStart;
 exports.getSiteSuccess = getSiteSuccess;
 exports.getSiteError = getSiteError;
@@ -10096,6 +10100,43 @@ function createSite(data) {
   };
 }
 
+var EDIT_SITE_START = exports.EDIT_SITE_START = 'EDIT_SITE_START';
+var EDIT_SITE_SUCESS = exports.EDIT_SITE_SUCESS = 'EDIT_SITE_SUCCESS';
+var EDIT_SITE_ERROR = exports.EDIT_SITE_ERROR = 'EDIT_SITE_ERROR';
+
+function siteEditStart(data) {
+  return { type: EDIT_SITE_START, data: data };
+}
+
+function siteEditSuccess(data) {
+  return { type: EDIT_SITE_SUCCESS, data: data };
+}
+
+function siteEditError(error) {
+  return { type: EDIT_SITE_ERROR, error: error };
+}
+
+function editSite(data) {
+  return function (dispatch) {
+    dispatch(siteEditStart());
+    fetch(apiUrl + '/saveSite', {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      dispatch((0, _reactRouterRedux.push)('/'));
+      dispatch(siteEditSuccess());
+    }).catch(function (error) {
+      dispatch(siteEditError());
+    });
+  };
+}
+
 // Get Single Site
 var GET_SITE_START = exports.GET_SITE_START = 'GET_SITE_START';
 var GET_SITE_SUCCESS = exports.GET_SITE_SUCCESS = 'GET_SITE_SUCCESS';
@@ -10125,9 +10166,6 @@ function getSite(id) {
     });
   };
 }
-
-// Edit Site
-
 
 // Delete Site
 
@@ -41709,7 +41747,12 @@ var SiteEdit = function (_Component) {
   function SiteEdit(props) {
     _classCallCheck(this, SiteEdit);
 
-    return _possibleConstructorReturn(this, (SiteEdit.__proto__ || Object.getPrototypeOf(SiteEdit)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (SiteEdit.__proto__ || Object.getPrototypeOf(SiteEdit)).call(this, props));
+
+    _this.state = {
+      setForm: false
+    };
+    return _this;
   }
 
   _createClass(SiteEdit, [{
@@ -41717,6 +41760,9 @@ var SiteEdit = function (_Component) {
     value: function componentWillMount() {
       if (this.props.params.id) {
         this.props.dispatch((0, _siteActions.getSite)(this.props.params.id));
+        this.setState({
+          setForm: true
+        });
       }
     }
   }, {
@@ -41743,7 +41789,7 @@ var SiteEdit = function (_Component) {
           null,
           'NEW SITE'
         ),
-        _react2.default.createElement(_SiteForm2.default, _extends({}, this.props, { init: true, submit: _siteActions.createSite }))
+        _react2.default.createElement(_SiteForm2.default, _extends({}, this.props, { init: this.state.setForm, submit: this.state.setForm ? _siteActions.editSite : _siteActions.createSite }))
       );
     }
   }]);
@@ -41809,6 +41855,13 @@ var SiteForm = function (_Component) {
       }
     }
   }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(props) {
+      if (this.props.init) {
+        props.initialize(props.site);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -41819,6 +41872,7 @@ var SiteForm = function (_Component) {
           reset = _props.reset,
           submitting = _props.submitting;
 
+      console.log(submit);
       return _react2.default.createElement(
         'form',
         { onSubmit: handleSubmit(submit) },
@@ -41878,9 +41932,13 @@ var SiteForm = function (_Component) {
             component: 'input',
             name: 'approvedUsers' })
         ),
-        _react2.default.createElement(
+        this.props.init ? _react2.default.createElement(
           'button',
-          { className: 'button--action' },
+          { type: 'submit', disabled: submitting, className: 'button--action' },
+          'Edit'
+        ) : _react2.default.createElement(
+          'button',
+          { type: 'submit', className: 'button--action' },
           'Create'
         )
       );

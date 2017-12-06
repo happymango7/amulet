@@ -28,12 +28,12 @@ exports.createSite = async (req, res) => {
     res.json(sites);
   };
   
-  exports.editSite = async (req, res) => {
-    winston.log('info', 'editSite', { body: req.body });
-    const db = await req.app.get('db');
-    const site = await db.get(`sites[${req.params.id}]`).assign(req.body);
-    res.json(site);
-  };
+  // exports.editSite = async (req, res) => {
+  //   winston.log('info', 'editSite', { body: req.body });
+  //   const db = await req.app.get('db');
+  //   const site = await db.get(`sites[${req.params.id}]`).assign(req.body);
+  //   res.json(site);
+  // };
   
   exports.getSite = async (req, res) => {
     winston.log('info', 'getSite', {

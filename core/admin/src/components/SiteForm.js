@@ -8,8 +8,16 @@ class SiteForm extends Component {
     }
   }
 
+  componentWillReceiveProps(props) {
+    if(this.props.init) {
+      props.initialize(props.site)
+    }
+  }
+
+
   render() {
     const { site, submit, handleSubmit, pristine, reset, submitting } = this.props
+    console.log(submit)
     return (
       <form onSubmit={handleSubmit(submit)}>
         <div className="block">
@@ -44,7 +52,7 @@ class SiteForm extends Component {
             component="input"
             name="approvedUsers" />
         </div>
-        <button className="button--action">Create</button>
+        {this.props.init ? <button type="submit" disabled={submitting} className="button--action">Edit</button> : <button type="submit" className="button--action">Create</button> }
       </form>
     )
   }

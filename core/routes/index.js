@@ -40,7 +40,7 @@ router.post(`${apiPrefix}/createSite`,
   siteController.createSite
 );
 router.post(`${apiPrefix}/saveSite`,
-  passport.authenticate('jwt', {session: false}),
+  // passport.authenticate('jwt', {session: false}),
   siteController.saveSite
 );
 router.post(`${apiPrefix}/uploadImage`,
@@ -53,7 +53,7 @@ router.post(`${apiPrefix}/uploadImage`,
 /**
  * Put
  */
-router.put(`${apiPrefix}/editSite/:id`, siteController.editSite);
+// router.put(`${apiPrefix}/editSite/:id`, siteController.editSite);
 
 
 /**

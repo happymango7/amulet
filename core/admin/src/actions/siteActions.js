@@ -75,6 +75,44 @@ export function createSite(data) {
   }
 }
 
+export const EDIT_SITE_START = 'EDIT_SITE_START'
+export const EDIT_SITE_SUCESS = 'EDIT_SITE_SUCCESS'
+export const EDIT_SITE_ERROR = 'EDIT_SITE_ERROR'
+
+export function siteEditStart(data) {
+  return { type: EDIT_SITE_START, data}
+}
+
+export function siteEditSuccess(data) {
+  return { type: EDIT_SITE_SUCCESS, data}
+}
+
+export function siteEditError(error) {
+  return { type: EDIT_SITE_ERROR, error}
+}
+
+export function editSite(data) {
+  return (dispatch) => {
+    dispatch(siteEditStart())
+    fetch(`${apiUrl}/saveSite`, {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(json => {
+      dispatch(push('/'))
+      dispatch(siteEditSuccess())
+    })
+    .catch(error => {
+      dispatch(siteEditError())
+    })
+  } 
+}
+
 // Get Single Site
 export const GET_SITE_START = 'GET_SITE_START'
 export const GET_SITE_SUCCESS = 'GET_SITE_SUCCESS'
@@ -105,10 +143,6 @@ export function getSite(id) {
     })
   }
 }
-
-// Edit Site
-
-
 
 // Delete Site
 
